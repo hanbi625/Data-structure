@@ -2,29 +2,38 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+struct st {
+	int h, m, s;
+};
 int main() {
-	char str[101] = { 0 };
-	int len = 0;
+	struct st t1, t2;
+	int hour, min, sec;
+	scanf("%d %d %d", &t1.h, &t1.m, &t1.s);
+	scanf("%d %d %d", &t2.h, &t2.m, &t2.s);
 
-	scanf("%s", str);
-	len = strlen(str);
-	for (int i = 0; i < len; i++) {
-		printf("%s\n", str);
-		char fir = str[0];
-		for (int j = 1; j < len; j++)
-			str[j - 1] = str[j];
-		str[len - 1] = fir;
-	}
-	/*
-	for (i = 0; i < len; i++) {
-		printf("%s\n", x);
-		for (j = 0; j < len - 1; j++) {
-			char tmp = x[j];
-			x[j] = x[j + 1];
-			x[j + 1] = tmp;
+	if (t2.s >= t1.s) {
+		sec = t2.s - t1.s;
+		if (t2.m >= t1.m) {
+			min = t2.m - t1.m;
+			hour = t2.h - t1.h;
+		}
+		else {
+			min = t2.m + 60 - t1.m;
+			hour = t2.h - 1 - t1.h;
 		}
 	}
-	*/
-
+	else {
+		sec = t2.s + 60 - t1.s;
+		t2.m -= 1;
+		if (t2.m >= t1.m) {
+			min = t2.m - t1.m;
+			hour = t2.h - t1.h;
+		}
+		else {
+			min = t2.m + 60 - t1.m;
+			hour = t2.h - 1 - t1.h;
+		}
+	}
+	printf("%d %d %d", hour, min, sec);
 	return 0;
 }
