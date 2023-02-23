@@ -3,21 +3,22 @@
 #include <string.h>
 #include <stdlib.h>
 int main() {
-	int* x = NULL, * y = NULL;
-	int N;
+	int* p = NULL;
+	int* q = NULL;
+	int N, i, j;
 
 	scanf("%d", &N);
-	x = (int*)malloc(N * sizeof(int));
-	if (x == NULL) return -1;
-	y = (int*)malloc(N * sizeof(int));
-	if (y == NULL) return -1;
+	p = (int*)malloc(N * sizeof(int));
+	if (p == NULL) return -1;
+	q = (int*)malloc(N * sizeof(int));
+	if (q == NULL) return -1;
 
-	for (int i = 0; i < N; i++)
-		scanf("%d", &x[i]);
-	for (int i = 0; i < N; i++)
-		scanf("%d", &y[i]);
-	for (int i = 0; i < N; i++)
-		printf(" %d", x[i] + y[N - 1 - i]);
+	for (i = 0; i < N; i++)
+		scanf("%d", &p[i]);
+	for (i = 0; i < N; i++)
+		scanf("%d", &q[i]);
+	for (i = 0, j = N - 1; i < N; i++, j--)
+		printf(" %d", p[i] + q[j]);
 
 	if (p != NULL) {
 		free(p); p = NULL;
