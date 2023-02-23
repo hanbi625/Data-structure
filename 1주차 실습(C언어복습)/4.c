@@ -15,6 +15,16 @@ int main() {
 			str[j - 1] = str[j];
 		str[len - 1] = fir;
 	}
+	/*
+	for (i = 0; i < len; i++) {
+		printf("%s\n", x);
+		for (j = 0; j < len - 1; j++) {
+			char tmp = x[j];
+			x[j] = x[j + 1];
+			x[j + 1] = tmp;
+		}
+	}
+	*/
 
 	return 0;
 }
